@@ -45,6 +45,11 @@ class LocationManager {
   Future<bool> get isRunning async =>
       await BackgroundLocator.isServiceRunning();
 
+  /// Will return `true` if a location service is currently running.
+  Future<bool> getIsRunning() async {
+    return await BackgroundLocator.isServiceRunning();
+  }
+
   /// A stream of location data updates.
   /// Call [start] before using this stream.
   Stream<LocationDto> get locationStream {
