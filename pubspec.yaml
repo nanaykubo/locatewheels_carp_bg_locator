@@ -12,8 +12,8 @@ dependencies:
     sdk: flutter
   background_locator_2:
     git:
-      url: git@github.com:ibrahimMahfuz/background_locator_fixed.git
-      ref: 2.0.6-non-null-safe.1
+      url: git@github.com:nanaykubo/locatewheels_bg_locator.git
+      ref: main
 
 dev_dependencies:
   flutter_test:
