@@ -12,7 +12,7 @@ dependencies:
   background_locator_2:
     git:
       url: https://github.com/nanaykubo/locatewheels_bg_locator.git
-      ref: main
+      ref: master
 
 dev_dependencies:
   flutter_test:
