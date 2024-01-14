@@ -8,7 +8,7 @@ part of carp_background_location;
 ///
 class LocationManager {
   ReceivePort _port = ReceivePort();
-  Stream<LocationDto> _locationStream;
+  Stream<LocationDto>? _locationStream;
   String _channelName = "BackgroundLocationChannel",
       _notificationTitle = "Background Location",
       _notificationMsg =
@@ -45,7 +45,6 @@ class LocationManager {
   Future<bool> get isRunning async =>
       await BackgroundLocator.isServiceRunning();
 
-  /// Will return `true` if a location service is currently running.
   Future<bool> getIsRunning() async {
     return await BackgroundLocator.isServiceRunning();
   }
@@ -55,6 +54,7 @@ class LocationManager {
   Stream<LocationDto> get locationStream {
     if (_locationStream == null) {
       Stream<dynamic> dataStream = _port.asBroadcastStream();
+
       _locationStream = dataStream
           .where((event) => event != null)
           .map((json) => LocationDto.fromJson(json));
@@ -110,24 +110,24 @@ class LocationManager {
 
   /// Set the title of the notification for the background service.
   /// Android only.
-  set notificationTitle(String title) => _notificationTitle = title;
+  set notificationTitle(value) => _notificationTitle = value;
 
   /// Set the message of the notification for the background service.
   /// Android only.
-  set notificationMsg(String message) => _notificationMsg = message;
+  set notificationMsg(value) => _notificationMsg = value;
 
   /// Set the long message of the notification for the background service.
   /// Android only.
-  set notificationBigMsg(String message) => _notificationBigMsg = message;
+  set notificationBigMsg(value) => _notificationBigMsg = value;
 
   /// Set the update interval in seconds.
   /// Android only.
-  set interval(int interval) => _interval = interval;
+  set interval(int value) => _interval = value;
 
   /// Set the update distance, i.e. the distance the user needs to move
   /// before an update is fired.
-  set distanceFilter(double distance) => _distanceFilter = distance;
+  set distanceFilter(double value) => _distanceFilter = value;
 
   /// Set the update accuracy. See [LocationAccuracy] for options.
-  set accuracy(LocationAccuracy accuracy) => _accuracy = accuracy;
+  set accuracy(LocationAccuracy value) => _accuracy = value;
 }
